@@ -57,3 +57,10 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()
+
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: 'Visual studio subscription'
+    KeyVaultName: 'temp-kv1'
+    SecretsFilter: 'sqlpassword'
+    RunAsPreJob: false
